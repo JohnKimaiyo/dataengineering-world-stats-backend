@@ -1,0 +1,148 @@
+{
+  "rows": 10,
+  "os": 0,
+  "page": 1,
+  "total": 587,
+  "documents": {
+    "D11831032": {
+      "id": "11831032",
+      "count": "Mexico",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "000334955_20100222012800"
+      },
+      "docdt": "2006-04-24T00:00:00Z",
+      "display_title": "Mexico - Wind Umbrella (La Venta II) Project",
+      "pdfurl": "http://documents.worldbank.org/curated/en/995361468056343658/pdf/529200PAD0P0801for0disclosure0final.pdf",
+      "disclstat": "Disclosed",
+      "guid": "995361468056343658",
+      "url": "http://documents.worldbank.org/curated/en/995361468056343658"
+    },
+    "D29900830": {
+      "id": "29900830",
+      "count": "Zambia",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "090224b08608649a_3_0"
+      },
+      "docdt": "2018-05-01T00:00:00Z",
+      "display_title": "Renewable energy wind mapping for Zambia : 12-month site resource report",
+      "pdfurl": "http://documents.worldbank.org/curated/en/528711526549758961/pdf/Renewable-energy-wind-mapping-for-Zambia-12-month-site-resource-report.pdf",
+      "disclstat": "Disclosed",
+      "guid": "528711526549758961",
+      "url": "http://documents.worldbank.org/curated/en/528711526549758961"
+    },
+    "D31211834": {
+      "id": "31211834",
+      "count": "Maldives",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "090224b086e466ac_1_0"
+      },
+      "docdt": "2018-10-01T00:00:00Z",
+      "display_title": "Wind Resource Mapping in Maldives : 12 Month Site Resource Report",
+      "pdfurl": "http://documents.worldbank.org/curated/en/271161564037906304/pdf/Wind-Resource-Mapping-in-Maldives-12-Month-Site-Resource-Report.pdf",
+      "disclstat": "Disclosed",
+      "guid": "271161564037906304",
+      "url": "http://documents.worldbank.org/curated/en/271161564037906304"
+    },
+    "D31211780": {
+      "id": "31211780",
+      "count": "Maldives",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "090224b086e466ae_1_0"
+      },
+      "docdt": "2019-06-28T00:00:00Z",
+      "display_title": "Wind Resource Mapping in Maldives : 24 Month Site Resource Report",
+      "pdfurl": "http://documents.worldbank.org/curated/en/669001564037551160/pdf/Wind-Resource-Mapping-in-Maldives-24-Month-Site-Resource-Report.pdf",
+      "disclstat": "Disclosed",
+      "guid": "669001564037551160",
+      "url": "http://documents.worldbank.org/curated/en/669001564037551160"
+    },
+    "D19544300": {
+      "id": "19544300",
+      "count": "World",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "000333037_20140521124748"
+      },
+      "docdt": "2014-05-21T00:00:00Z",
+      "display_title": "Implementing onshore wind power projects",
+      "pdfurl": "http://documents.worldbank.org/curated/en/556561468337209595/pdf/881840BRI0Live00Box385205B00PUBLIC0.pdf",
+      "disclstat": "Disclosed",
+      "guid": "556561468337209595",
+      "url": "http://documents.worldbank.org/curated/en/556561468337209595"
+    },
+    "D26951778": {
+      "id": "26951778",
+      "count": "World",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "090224b084710367_1_0"
+      },
+      "docdt": "2015-08-07T00:00:00Z",
+      "display_title": "Environmental, health, and safety guidelines for wind energy",
+      "pdfurl": "http://documents.worldbank.org/curated/en/498831479463882556/pdf/110346-WP-FINAL-Aug-2015-Wind-Energy-EHS-Guideline-PUBLIC.pdf",
+      "disclstat": "Disclosed",
+      "guid": "498831479463882556",
+      "url": "http://documents.worldbank.org/curated/en/498831479463882556"
+    },
+    "D5704111": {
+      "id": "5704111",
+      "count": "East Asia and Pacific",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "000090341_20050401090154"
+      },
+      "docdt": "2000-01-01T00:00:00Z",
+      "display_title": "Statistical analysis of wind farm costs and policy regimes",
+      "pdfurl": "http://documents.worldbank.org/curated/en/460141468748770824/pdf/318690windfarmcosts.pdf",
+      "guid": "460141468748770824",
+      "url": "http://documents.worldbank.org/curated/en/460141468748770824"
+    },
+    "D31420586": {
+      "id": "31420586",
+      "count": "Zambia",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "090224b08710ba89_1_0"
+      },
+      "docdt": "2019-04-30T00:00:00Z",
+      "display_title": "Wind Resource Mapping in Zambia : 24 Month Site Resource Report",
+      "pdfurl": "http://documents.worldbank.org/curated/en/663631569232378023/pdf/Wind-Resource-Mapping-in-Zambia-24-Month-Site-Resource-Report.pdf",
+      "disclstat": "Disclosed",
+      "guid": "663631569232378023",
+      "url": "http://documents.worldbank.org/curated/en/663631569232378023"
+    },
+    "D31175024": {
+      "id": "31175024",
+      "count": "Pakistan",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "090224b086ddc4ba_1_0"
+      },
+      "docdt": "2018-03-01T00:00:00Z",
+      "display_title": "Wind Resource Mapping in Pakistan : Twelve Month Site Resource Report",
+      "pdfurl": "http://documents.worldbank.org/curated/en/180691561028043066/pdf/Wind-Resource-Mapping-in-Pakistan-Twelve-Month-Site-Resource-Report.pdf",
+      "disclstat": "Disclosed",
+      "guid": "180691561028043066",
+      "url": "http://documents.worldbank.org/curated/en/180691561028043066"
+    },
+    "D19030958": {
+      "id": "19030958",
+      "count": "Yemen, Republic of",
+      "seccl": "Public",
+      "entityids": {
+        "entityid": "000442464_20140220094225"
+      },
+      "docdt": "2014-02-11T00:00:00Z",
+      "display_title": "Yemen - Mocha Wind Park Project",
+      "pdfurl": "http://documents.worldbank.org/curated/en/156751468335513164/pdf/PAD6510P146055010Box382145B00OUO090.pdf",
+      "disclstat": "Disclosed",
+      "guid": "156751468335513164",
+      "url": "http://documents.worldbank.org/curated/en/156751468335513164"
+    },
+    "facets": {}
+  }
+}
