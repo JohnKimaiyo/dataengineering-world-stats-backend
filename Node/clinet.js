@@ -1,8 +1,6 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const cors = require("cors");
-app.use(cors());
 
 
 
@@ -11,15 +9,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-// API route to send data to frontend
-app.get('/api/data', async (req, res) => {
-    try {
-        const data = await fetchData(apiUrl);
-        res.json(data);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
+app.get('/', (req, res) => {
+  res.send('Data Engineer Kimaiyo!')
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
