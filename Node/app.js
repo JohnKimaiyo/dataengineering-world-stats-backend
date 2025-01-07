@@ -2,6 +2,20 @@ const https = require('https');
 const fs = require('fs');
 const path = require('path');
 
+
+
+// Server setuo
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Data Engineer Kimaiyo!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 // API endpoint
 const apiUrl = 'https://search.worldbank.org/api/v3/wds?format=json&qterm=wind%20turbine&fl=docdt,count';
 
