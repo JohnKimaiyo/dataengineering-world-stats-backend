@@ -78,5 +78,11 @@ async function main() {
 
 
 // load date to s3 backet
-const s3 = new AWS
+const s3 = new AWS.S3();
+const bucketName = 'usa-population-macroafrikpress-uploads'
+const newFileNameKey =  'us_population_data.json'
+
+
+
+
 main();
