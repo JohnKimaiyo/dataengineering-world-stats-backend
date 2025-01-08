@@ -129,19 +129,19 @@
       "guid": "180691561028043066",
       "url": "http://documents.worldbank.org/curated/en/180691561028043066"
     },
-    "D15615154": {
-      "id": "15615154",
-      "count": "Latin America",
+    "D19030958": {
+      "id": "19030958",
+      "count": "Yemen, Republic of",
       "seccl": "Public",
       "entityids": {
-        "entityid": "000386194_20120109010935"
+        "entityid": "000442464_20140220094225"
       },
-      "docdt": "2011-12-01T05:00:00Z",
-      "display_title": "Greening the wind : environmental and social considerations for wind power development",
-      "pdfurl": "http://documents.worldbank.org/curated/en/239851468089382658/pdf/662330PUB0EPI00e0wind09780821389263.pdf",
+      "docdt": "2014-02-11T00:00:00Z",
+      "display_title": "Yemen - Mocha Wind Park Project",
+      "pdfurl": "http://documents.worldbank.org/curated/en/156751468335513164/pdf/PAD6510P146055010Box382145B00OUO090.pdf",
       "disclstat": "Disclosed",
-      "guid": "239851468089382658",
-      "url": "http://documents.worldbank.org/curated/en/239851468089382658"
+      "guid": "156751468335513164",
+      "url": "http://documents.worldbank.org/curated/en/156751468335513164"
     },
     "facets": {}
   }
