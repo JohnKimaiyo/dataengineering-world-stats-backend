@@ -1,109 +1,131 @@
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const AWS = require('aws-sdk')
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+const express = require('express');
+const { parse } = require('json2csv'); // Library to convert JSON to CSV
 
-
-
-// Server setuo
-const express = require('express')
-const app = express()
-const port = 3000
+const app = express();
+const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Data Engineer Kimaiyo!')
-})
+  res.send('Data Engineer Kimaiyo!');
+});
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
-// API endpoint
+  console.log(`Example app listening on port ${port}`);
+});
+
 const apiUrl = 'https://search.worldbank.org/api/v3/wds?format=json&qterm=wind%20turbine&fl=docdt,count';
 
 // Function to fetch data from the API
 function fetchData(url) {
-    return new Promise((resolve, reject) => {
-        https.get(url, (res) => {
-            let data = '';
+  return new Promise((resolve, reject) => {
+    https.get(url, (res) => {
+      let data = '';
 
-            // Collect data chunks
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
 
-            // End event when the response is complete
-            res.on('end', () => {
-                try {
-                    const parsedData = JSON.parse(data);
-                    resolve(parsedData);
-                } catch (error) {
-                    reject(`Error parsing JSON: ${error.message}`);
-                }
-            });
-        }).on('error', (err) => {
-            reject(`Error fetching data: ${err.message}`);
-        });
+      res.on('end', () => {
+        try {
+          const parsedData = JSON.parse(data);
+          resolve(parsedData);
+        } catch (error) {
+          reject(`Error parsing JSON: ${error.message}`);
+        }
+      });
+    }).on('error', (err) => {
+      reject(`Error fetching data: ${err.message}`);
     });
+  });
 }
 
 // Function to write data to a JSON file
 function writeToFile(filename, data) {
+  return new Promise((resolve, reject) => {
     fs.writeFile(filename, JSON.stringify(data, null, 2), (err) => {
-        if (err) {
-            console.error(`Error writing to file: ${err.message}`);
-        } else {
-            console.log(`Data successfully written to ${filename}`);
-        }
+      if (err) {
+        reject(`Error writing to file: ${err.message}`);
+      } else {
+        console.log(`Data successfully written to ${filename}`);
+        resolve();
+      }
     });
+  });
 }
 
-// Main function to fetch and save data
-async function main() {
+// Function to write data to a CSV file
+function writeToCSV(filename, data) {
+  return new Promise((resolve, reject) => {
     try {
-        console.log('Fetching data from API...');
-        const data = await fetchData(apiUrl);
-        console.log('Data fetched successfully. Writing to file...');
-
-        const outputDir = path.join(__dirname, 'data');
-        if (!fs.existsSync(outputDir)) {
-            fs.mkdirSync(outputDir);
+      const csv = parse(data); // Convert JSON to CSV
+      fs.writeFile(filename, csv, (err) => {
+        if (err) {
+          reject(`Error writing CSV to file: ${err.message}`);
+        } else {
+          console.log(`CSV successfully written to ${filename}`);
+          resolve();
         }
-
-        const outputFilename = path.join(outputDir, 'us_population_data.json');
-        writeToFile(outputFilename, data);
+      });
     } catch (error) {
-        console.error(`Error: ${error}`);
+      reject(`Error converting JSON to CSV: ${error.message}`);
     }
+  });
 }
 
+// Function to upload data to S3
+async function uploadToS3(bucketName, key, filePath) {
+  const s3Client = new S3Client({ region: 'us-east-1' }); // Specify your region
+  const fileData = fs.readFileSync(filePath);
 
-// load date to s3 backet
-const s3 = new AWS.S3();
-const bucketName = 'usa-population-macroafrikpress-uploads'
-const newFileNameKey =  'us_population_data.json'
-const filePath = './data/us_pupolation_data.json'
-
-function uploadFile(filePath, bucketName, newFileNameKey){
-const fileStream = fs.createReadStream(filePath);
-fileStream.on(event 'error', listener:(err)=>{
-    console.log('file error',err)
-})
-
-const params = {
-    Bucket:bucketName,
-    Key:newFileNameKey,
-    Body:fileStream
-};
-
-s3.upload(params, options:(err,data) =>{
-if(err){
-    console.group('Error',err)
+  try {
+    console.log('Uploading data to S3...');
+    await s3Client.send(
+      new PutObjectCommand({
+        Bucket: bucketName,
+        Key: key,
+        Body: fileData,
+      })
+    );
+    console.log(`Data successfully uploaded to S3 bucket ${bucketName} with key ${key}`);
+  } catch (error) {
+    console.error(`Error uploading to S3: ${error.message}`);
+  }
 }
-if(data){
-   console.log('Sucess',data.location)
+
+// Main function to fetch, save, and upload data
+async function main() {
+  try {
+    console.log('Fetching data from API...');
+    const data = await fetchData(apiUrl);
+    console.log('Data fetched successfully. Writing to files...');
+
+    const outputDir = path.join(__dirname, 'data');
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir);
+    }
+
+    // Write JSON file
+    const jsonFilename = path.join(outputDir, 'us_population_data.json');
+    await writeToFile(jsonFilename, data);
+
+    // Write CSV file
+    const csvFilename = path.join(outputDir, 'us_population_data.csv');
+    await writeToCSV(csvFilename, data);
+
+    // Upload JSON to S3
+    const bucketName = 'usa-population-macroafrikpress-uploads';
+    const jsonKey = 'us_population_data.json';
+    await uploadToS3(bucketName, jsonKey, jsonFilename);
+
+    // Upload CSV to S3
+    const csvKey = 'us_population_data.csv';
+    await uploadToS3(bucketName, csvKey, csvFilename);
+  } catch (error) {
+    console.error(`Error: ${error}`);
+  }
 }
-})
-}
-uploadFile(filePath, bucketName, newFileNameKey)
 
 main();
