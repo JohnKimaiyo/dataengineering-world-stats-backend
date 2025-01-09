@@ -84,8 +84,25 @@ const newFileNameKey =  'us_population_data.json'
 const filePath = './data/us_pupolation_data.json'
 
 function uploadFile(filePath, bucketName, newFileNameKey){
-const fileStream = fs.createReadStream(filePath)
+const fileStream = fs.createReadStream(filePath);
+fileStream.on(event 'error', listener:(err)=>{
+    console.log('file error',err)
+})
 
+const params = {
+    Bucket:bucketName,
+    Key:newFileNameKey,
+    Body:fileStream
+};
+
+s3.upload(params, options:(err,data) =>{
+if(err){
+    console.group('Error',err)
+}
+if(data){
+   console.log('Sucess',data.location)
+}
+})
 }
 uploadFile(filePath, bucketName, newFileNameKey)
 
